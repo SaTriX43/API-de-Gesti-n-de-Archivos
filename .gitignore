@@ -1,0 +1,80 @@
+﻿############################
+# Build results
+############################
+bin/
+obj/
+out/
+
+############################
+# Visual Studio files
+############################
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+############################
+# Visual Studio Code
+############################
+.vscode/
+
+############################
+# NuGet
+############################
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+############################
+# Logs
+############################
+logs/
+*.log
+
+############################
+# Uploaded files
+############################
+uploads/
+
+############################
+# Environment settings
+############################
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+
+# NEVER upload secrets
+secrets.json
+*.secret.json
+*.env
+
+############################
+# ASP.NET Core Data Protection Keys
+############################
+**/App_Data/ 
+**/DataProtection-Keys/
+
+############################
+# Rider / JetBrains IDE
+############################
+.idea/
+
+############################
+# OS-generated files
+############################
+Thumbs.db
+ehthumbs.db
+.DS_Store
+*.swp
+*.tmp
+*.temp
+
+############################
+# Resharper
+############################
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user

@@ -1,0 +1,6 @@
+@API_de_Gestión_de_Archivos_HostAddress = http://localhost:5261
+
+GET {{API_de_Gestión_de_Archivos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
