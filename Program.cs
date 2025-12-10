@@ -1,4 +1,6 @@
+using API_de_Gestión_de_Archivos.Helper;
 using API_de_Gestion_de_Archivos.Middleware;
+using API_de_Gestión_de_Archivos.Services;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IArchivoService, ArchivoService>();
+builder.Services.AddScoped<IArchivoHelper, ArchivoHelper>();
 
 var app = builder.Build();
 
