@@ -2,6 +2,7 @@
 using API_de_Gestión_de_Archivos.Models;
 using System.Net.NetworkInformation;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace API_de_Gestión_de_Archivos.Services
 {
@@ -14,6 +15,15 @@ namespace API_de_Gestión_de_Archivos.Services
             _archivoHelper = archivoHelper;
         }
 
+        public Result<List<string>> ObtenerNombreArchivos()
+        {
+            var nombreArchivos = _archivoHelper.ObtenerNombreArchivos();
+            return nombreArchivos;
+        }
+        public async Task<Result<(Stream,string tipoContenido)>> DescargarArchivo(string nombreArchivo)
+        {
+            return await _archivoHelper.DescargarArchivo(nombreArchivo);
+        }
         public async Task<Result<string>> SubirArchivo(IFormFile archivo)
         {
             var rutaArchivo = Path.GetExtension(archivo.FileName).ToLower();

@@ -24,14 +24,14 @@ builder.Services.AddScoped<IArchivoHelper, ArchivoHelper>();
 
 var app = builder.Build();
 
-app.UseMiddleware<ErrorHandlerMiddleware>();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
+// Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 

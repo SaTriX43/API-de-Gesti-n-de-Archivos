@@ -4,6 +4,8 @@ namespace API_de_Gestión_de_Archivos.Services
 {
     public interface IArchivoService
     {
+        public Result<List<string>> ObtenerNombreArchivos();
         public Task<Result<string>> SubirArchivo(IFormFile archivo);
+        public Task<Result<(Stream, string tipoContenido)>> DescargarArchivo(string nombreArchivo);
     }
 }

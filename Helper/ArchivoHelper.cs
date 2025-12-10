@@ -11,6 +11,37 @@ namespace API_de_Gestión_de_Archivos.Helper
             _environment = environment;
         }
 
+        public Result<List<string>> ObtenerNombreArchivos()
+        {
+            var rutaCarpetaCompleta = Path.Combine(_environment.ContentRootPath, "Uploads");
+            if(!Directory.Exists(rutaCarpetaCompleta))
+            {
+                Directory.CreateDirectory(rutaCarpetaCompleta);
+                return Result<List<string>>.Success(new List<string>());
+            }
+
+            var archivosRutaCompleta = Directory.GetFiles(rutaCarpetaCompleta);
+
+            var nombres = archivosRutaCompleta.Select(r => Path.GetFileName(r)).ToList();
+
+            return Result<List<string>>.Success(nombres);
+
+        }
+        public async Task<Result<(Stream, string tipoContenido)>> DescargarArchivo(string nombreArchivo)
+        {
+            var rutaCarpetaCompleta = Path.Combine(_environment.ContentRootPath,"Uploads");
+            var rutaArchivoCompleta = Path.Combine(rutaCarpetaCompleta, nombreArchivo);
+
+            if(!File.Exists(rutaArchivoCompleta))
+            {
+                return Result<(Stream, string tipoContenido)>.Failure($"El archivo con nombre {nombreArchivo} no existe");
+            }
+
+            var stream = new FileStream(rutaArchivoCompleta, FileMode.Open, FileAccess.Read);
+            var contentType = "application/octet-stream";
+
+            return Result<(Stream, string tipoContenido)>.Success((stream,contentType));
+        }
         public async Task<Result<string>> SubirArchivo(IFormFile archivo)
         {
             try
